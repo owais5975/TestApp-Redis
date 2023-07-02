@@ -8,7 +8,7 @@ using TestApp.Services;
 namespace TestApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1/[controller]")]
     public class AppController : ControllerBase
     {
 
