@@ -13,10 +13,10 @@ namespace TestApp.Controllers
     {
 
         private readonly ILogger<AppController> _logger;
-        private readonly IDistributedCache _cache;
+        private readonly ICacheService _cache;
         private readonly IUserRepo _userRepo;
 
-        public AppController(ILogger<AppController> logger, IDistributedCache cache, IUserRepo userRepo)
+        public AppController(ILogger<AppController> logger, ICacheService cache, IUserRepo userRepo)
         {
             _logger = logger;
             _cache = cache;
@@ -29,6 +29,7 @@ namespace TestApp.Controllers
             try
             {
                 await _userRepo.AddUser(dto);
+                bool isRemoved = _cache.Remove("users");
                 return Ok(new JSONResponse { Status = true, Message = "User added successfully." });
             }
             catch (Exception ex)
@@ -84,20 +85,17 @@ namespace TestApp.Controllers
         {
             try
             {
-                List<GetUserDTO>? users = null;
-                var cachedData = await _cache.GetStringAsync("users");
-                if (cachedData == null)
-                {
-                    var distributedCacheEntryOptions = CacheHelper.CacheOptions();
-                    users = _userRepo.GetUsers();
-                    var serializedData = JsonConvert.SerializeObject(users);
-                    await _cache.SetStringAsync("users", serializedData, distributedCacheEntryOptions);
+                IEnumerable<GetUserDTO>? users = null;
+                var cachedData = _cache.Get<IEnumerable<GetUserDTO>>("users");
+                if (cachedData == null || cachedData.Count() == 0)
+                {           
+                    users = _userRepo.GetUsers();                 
+                    _cache.Set("users", users);
                 }
                 else
                 {
-                    users = JsonConvert.DeserializeObject<List<GetUserDTO>>(cachedData);
+                    users = cachedData;
                 }
-
                 return Ok(new JSONResponse { Status = true, Data = users });
             }
             catch (Exception ex)
