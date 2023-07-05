@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\S.M.'s Pro\\Downloads\\Software Development\\TestApp\\TestApp\\TestApp.csproj": {}
+    "C:\\Users\\S.M.'s Pro\\Downloads\\Git-Repo\\TestApp-Redis\\TestApp\\TestApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\S.M.'s Pro\\Downloads\\Software Development\\TestApp\\TestApp\\TestApp.csproj": {
+    "C:\\Users\\S.M.'s Pro\\Downloads\\Git-Repo\\TestApp-Redis\\TestApp\\TestApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\S.M.'s Pro\\Downloads\\Software Development\\TestApp\\TestApp\\TestApp.csproj",
+        "projectUniqueName": "C:\\Users\\S.M.'s Pro\\Downloads\\Git-Repo\\TestApp-Redis\\TestApp\\TestApp.csproj",
         "projectName": "TestApp",
-        "projectPath": "C:\\Users\\S.M.'s Pro\\Downloads\\Software Development\\TestApp\\TestApp\\TestApp.csproj",
+        "projectPath": "C:\\Users\\S.M.'s Pro\\Downloads\\Git-Repo\\TestApp-Redis\\TestApp\\TestApp.csproj",
         "packagesPath": "C:\\Users\\S.M.'s Pro\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\S.M.'s Pro\\Downloads\\Software Development\\TestApp\\TestApp\\obj\\",
+        "outputPath": "C:\\Users\\S.M.'s Pro\\Downloads\\Git-Repo\\TestApp-Redis\\TestApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -72,6 +72,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
+            },
+            "WatchDog.NET": {
+              "target": "Package",
+              "version": "[1.4.10, )"
             }
           },
           "imports": [
