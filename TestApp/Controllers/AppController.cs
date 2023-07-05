@@ -44,6 +44,7 @@ namespace TestApp.Controllers
             try
             {
                 await _userRepo.UpdateUser(dto);
+                bool isRemoved = _cache.Remove("users");
                 return Ok(new JSONResponse { Status = true, Message = "User updated successfully." });
             }
             catch (Exception ex)
@@ -58,6 +59,7 @@ namespace TestApp.Controllers
             try
             {
                 await _userRepo.DeleteUser(Id);
+                bool isRemoved = _cache.Remove("users");
                 return Ok(new JSONResponse { Status = true, Message = "User deleted successfully." });
             }
             catch (Exception ex)
